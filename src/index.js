@@ -7,35 +7,27 @@ import connectDB from "./db/index.js";
 import { app } from "./app.js";
 
 dotenv.config({
-        path: './env'
-})
-
+  path: "./env",
+});
 
 connectDB()
-.then(()=>{
-        try{
-                app.listen(process.env.PORT || 8800 , ()=>{
-                  console.log(`.. Server is listning on port : ${process.env.PORT || 8800}`);             
-                })
-        }
-        catch{
-                app.on("error", (error) => {
-                  console.log("ERROR: ", error);
-                  throw error;
-                });
-        }
-})
-.catch((err)=>{
-        console.log("DB connetion error !!! ::",err);
-})
-
-
-
-
-
-
-
-
+  .then(() => {
+    try {
+      app.listen(process.env.PORT || 8800, () => {
+        console.log(
+          `.. Server is listning on port : ${process.env.PORT || 8800}`
+        );
+      });
+    } catch {
+      app.on("error", (error) => {
+        console.log("ERROR: ", error);
+        throw error;
+      });
+    }
+  })
+  .catch((err) => {
+    console.log("DB connetion error !!! ::", err);
+  });
 
 //old aproach
 
@@ -62,4 +54,4 @@ const app = express()
                 throw err
         }
 })()
-*/        
+*/
